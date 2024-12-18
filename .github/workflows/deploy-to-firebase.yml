@@ -1,0 +1,59 @@
+name: Deploy to Firebase Hosting
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'release/*' # Triggers only for branches starting with "release/"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Flutter environment
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable' # Use the stable Flutter channel
+          flutter-version: 3.24.4
+
+      # Step 3: Install Flutter dependencies
+      - name: Install Flutter dependencies
+        working-directory: ./flutter-app
+        run: flutter pub get
+
+      # Step 4: Set up Node.js environment for building the Flutter integration
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Use the Node.js version your project needs
+
+      # Step 5: Install dependencies in the Next.js app folder
+      - name: Install dependencies for Next.js app
+        working-directory: ./website
+        run: npm install
+
+      # Step 6: Build the Flutter app
+      - name: Build Flutter app
+        working-directory: ./website
+        run: npm run build-flutter
+
+      # Step 7: Build the Next.js app
+      - name: Build Next.js app
+        working-directory: ./website
+        run: npm run build
+
+      # Step 8: Deploy to Firebase Hosting
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+        
+      - name: Deploy to Firebase
+        working-directory: ./website
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting
