@@ -1,58 +1,31 @@
 'use client'
 
-import React, { useState } from 'react';
-import { TripProvider, ValidDays } from '@/context/TripContext';
-import SummaryStep from '@/components/SummaryStep';
+import React from 'react';
 import { Button } from "@/components/ui/button"
-import Layout from '@/components/Layout';
-import IntroStep from '@/components/IntroStep';
-import DayPlanStep from '@/components/DayPlanStep';
+import Link from 'next/link';
 
-const steps = [
-  { component: IntroStep, title: 'Welcome to our Trip Planner!', day: null },
-  { component: DayPlanStep, title: 'Friday February 14th', day: ValidDays.friday },
-  { component: DayPlanStep, title: 'Saturday February 15th', day: ValidDays.saturday },
-  { component: DayPlanStep, title: 'Sunday February 16th', day: ValidDays.sunday },
-  { component: SummaryStep, title: 'Friday February 14th', day: null },
-];
-
-export default function Home() {
-  const [currentStep, setCurrentStep] = useState(0);
-
-  const handleNext = () => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
-  const handleBack = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
-
-  const CurrentStepComponent = steps[currentStep].component;
-  const CurrentStepTitle = steps[currentStep].title;
-  const CurrentStepDay = steps[currentStep].day;
-
+export default function MainPage() {
   return (
-    <TripProvider>
-      <Layout currentStep={currentStep + 1} totalSteps={steps.length}>
-        <CurrentStepComponent title={CurrentStepTitle} currentDay={CurrentStepDay} />
-        <div className="flex justify-between mt-4">
-          {currentStep > 0 && (
-            <Button onClick={handleBack} variant="outline">
-              Back
-            </Button>
-          )}
-          {currentStep < steps.length - 1 && (
-            <Button onClick={handleNext} className="ml-auto">
-              Next
-            </Button>
-          )}
-        </div>
-      </Layout>
-    </TripProvider>
+    <div className="min-h-screen bg-gradient-to-br from-green-100 to-pink-100  p-8 text-center flex flex-col gap-y-8 items-center justify-center">
+      <div className="text-5xl font-bold mb-6">
+          <span className="text-red-600">Merry</span>&nbsp;<span className="text-green-600">Christmas</span>&nbsp;<span className="text-pink-600">Riley</span>
+      </div>
+      <div className="text-2xl font-bold text-center flex items-center justify-center mb-6 text-black">
+        Would you like to go to Gibson Island with me on February 14th, 2024?
+      </div>
+      <div className="flex flex-row gap-x-16">
+        <Link href="/riley">
+          <Button className="ml-auto bg-gradient-to-br hover:bg-gradient-to-tl from-green-400 to-red-400 text-black hover:text-white">
+            Lets Go!
+          </Button>
+        </Link>
+        <Link href="/no">
+          <Button variant="outline" className="ml-auto hover:bg-red-600 hover:text-white">
+            F*ck That (aka NO)
+          </Button>
+        </Link>
+      </div>
+    </div>
   );
 }
 

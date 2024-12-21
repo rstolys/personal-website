@@ -21,9 +21,14 @@ export type Restaurant = {
   externalLink: string;
 };
 
-type DaySchedule = {
-    day: DayOfTrip;
-    items: ScheduleItem[];
+export type DaySchedule = {
+  day: DayOfTrip;
+  items: ScheduleItem[];
+};
+
+export type TypeSchedule = {
+  type: 'accommodation' | 'activity' | 'meal';
+  items: ScheduleItem[];
 };
 
 export type DayOfTrip = string | null;
@@ -33,7 +38,7 @@ export const ValidDays = {
     sunday: 'Sunday'
 };
 
-type ScheduleItem = {
+export type ScheduleItem = {
   type: 'accommodation' | 'activity' | 'meal';
   item: Accommodation | Activity | Restaurant;
   day: DayOfTrip;
