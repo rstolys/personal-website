@@ -13,7 +13,7 @@ const IntroStep: React.FC = ({ }) => {
           At the end you will get a printable itinerary for our trip!
         </div>
         <div>
-          Click '<b>Next</b>' to get started.
+          Click <b>Next</b> to get started.
         </div>
       </div>
     </div>

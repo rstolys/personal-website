@@ -2,7 +2,6 @@ import React from 'react';
 import { useTripContext, ScheduleItem, TypeSchedule, Accommodation, Activity, Restaurant } from '@/context/TripContext';
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
-import Image from 'next/image'
 import Link from 'next/link'
 
 // TODO: Need to arrange this schedule in a way that is printable as an itenary
@@ -10,7 +9,7 @@ import Link from 'next/link'
 // -- This will make it easier to print and read than having images  
 
 const SummaryStep: React.FC = () => {
-  const { tripState, getScheduleItemsByDay } = useTripContext();
+  const { getScheduleItemsByDay } = useTripContext();
 
   const handlePrint = () => {
     window.print();
@@ -18,9 +17,9 @@ const SummaryStep: React.FC = () => {
 
 
   const groupScheduleItemsByType = (scheduledItems: ScheduleItem[]) => {
-    var typeSchedules: TypeSchedule[] = [];
+    const typeSchedules: TypeSchedule[] = [];
     scheduledItems.forEach((item) => {
-      var typeSchedule = typeSchedules.find((typeSchedule) => typeSchedule.type === item.type);
+      const typeSchedule = typeSchedules.find((typeSchedule) => typeSchedule.type === item.type);
       console.log(item, typeSchedule == null)
       if (typeSchedule) {
         typeSchedule.items.push(item);
@@ -54,8 +53,8 @@ const SummaryStep: React.FC = () => {
           </CardHeader>
           <CardContent>
             <div className='flex flex-col gap-y-8'>
-              {groupScheduleItemsByType(scheduleByDay.items).map((typeSchedule) => (
-                <div className="flex flex-col gap-2">
+              {groupScheduleItemsByType(scheduleByDay.items).map((typeSchedule, index) => (
+                <div key={index} className="flex flex-col gap-2">
                   <h3 className="text-lg font-semibold">{typeSchedule.type.toUpperCase()}</h3>
                   <div className='flex flex-col gap-4'>
                     {typeSchedule.items.map((item, index) => (

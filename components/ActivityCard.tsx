@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accommodation, Activity, DayOfTrip, useTripContext } from '@/context/TripContext';
+import { Activity, DayOfTrip, useTripContext } from '@/context/TripContext';
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
 import Image from 'next/image'
