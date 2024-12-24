@@ -8,9 +8,9 @@ export default function MainPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 to-pink-100  p-8 text-center flex flex-col gap-y-8 items-center justify-center">
       <div className="text-5xl font-bold mb-6">
-          <span className="text-red-600">Merry</span>&nbsp;<span className="text-green-600">Christmas</span>&nbsp;<span className="text-pink-600">Riley</span>
+          <span className="text-red-600 inline-block">Merry</span>&nbsp;<span className="text-green-600 inline-block">Christmas</span>&nbsp;<span className="text-pink-600 inline-block">Riley</span>
       </div>
-      <div className="text-2xl font-bold text-center flex items-center justify-center mb-6 text-black">
+      <div className="text-2xl font-bold text-center flex items-center justify-center mb-6 text-black w-full">
         Would you like to go to Gibson Island with me on February 14th, 2024?
       </div>
       <div className="flex flex-row gap-x-16">

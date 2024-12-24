@@ -21,9 +21,9 @@ export default function NoPage() {
         </Link>
       </div>
       <div className="mt-12">
-        <Link href="/">
+        <Link href="/riley">
           <Button variant="link" className="ml-auto text-xs hover:bg-green-600 hover:text-white">
-            I take it back!?!?!?
+            I take it back. Let&apos;s do it!!!!!
           </Button>
         </Link>
       </div>
