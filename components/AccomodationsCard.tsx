@@ -42,7 +42,7 @@ const AccommodationCard: React.FC<{ option: Accommodation, currentDay: DayOfTrip
         <CardDescription>{option.description}</CardDescription>
       </CardHeader>
       <CardContent>
-        <Image src={option.imageUrl} alt={option.name} width={300} height={200} className="rounded-md" />
+        <Image src={option.imageUrl} alt={option.name} width={300} height={200} className="rounded-md object-cover w-[300px] h-[200px]" />
       </CardContent>
       <CardFooter className="flex flex-row items-center space-x-2">
         <Button variant={itemSelected ? "default" : "outline"} onClick={handleSelect}>{itemSelected ? 'Remove Item' : 'Add to Schedule'}</Button>

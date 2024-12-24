@@ -63,7 +63,7 @@ const SummaryStep: React.FC = () => {
                         <p className="font-semibold">{item.item.name}</p>
                         <p className="text-sm text-gray-500">{getDescriptionOfItem(item.item)}</p>
                         <Link href={item.item.externalLink} target="_blank" rel="noopener noreferrer">
-                          <Button variant="link" className="p-0 h-auto">{item.item.externalLink}</Button>
+                          <Button variant="link" className="p-0 h-auto text-wrap">{item.item.externalLink.slice(0,50)}</Button>
                         </Link>
                       </div>
                     ))}
