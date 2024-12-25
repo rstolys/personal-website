@@ -58,7 +58,7 @@ const SummaryStep: React.FC = () => {
                   <h3 className="text-lg font-semibold">{typeSchedule.type.toUpperCase()}</h3>
                   <div className='flex flex-col gap-4'>
                     {typeSchedule.items.map((item, index) => (
-                      <div key={index} className="border-2 border-gray-200 p-4 rounded-md min-w-[200px]">
+                      <div key={index} className="border-2 border-gray-200 p-4 rounded-md min-w-[200px] overflow-hidden">
                         <p className="font-semibold">{item.item.name}</p>
                         <p className="text-sm text-gray-500">{getDescriptionOfItem(item.item)}</p>
                         <Link href={item.item.externalLink} target="_blank" rel="noopener noreferrer">
